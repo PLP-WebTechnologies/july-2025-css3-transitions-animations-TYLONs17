@@ -1,0 +1,422 @@
+/*
+ * styles.css - The Atomic Aura (Animated Edition)
+ * This stylesheet provides the visual structure and aesthetic for the
+ * "I AM ATOMIC" themed web page. It demonstrates CSS selectors,
+ * basic styling properties, the CSS Box Model, responsive design,
+ * and crucially, CSS3 Transitions and Keyframe Animations.
+ */
+
+/* Universal Box-Sizing for consistent Box Model behavior */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Basic Body Styles (Element Selector) */
+body {
+    font-family: 'Inter', sans-serif; /* Using Inter font */
+    background-color: #1a202c; /* Deep dark background */
+    color: #cbd5e0; /* Light gray text for contrast */
+    line-height: 1.6;
+    margin: 0; /* Remove default body margin */
+    padding: 0; /* Remove default body padding */
+}
+
+/* Header Styling (Class Selector) */
+.main-header {
+    text-align: center;
+    padding: 60px 20px; /* Increased padding for more visual impact */
+    margin-bottom: 40px; /* Space below the header */
+    background-color: #2d3748; /* Fallback background color */
+    background-image: url('https://media.tenor.com/kipGUL3LxH4AAAAM/i-am-atomic-atomic.gif'); /* The Atomic GIF */
+    background-size: cover; /* Cover the entire header area */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    border-bottom: 5px solid #6b46c1; /* Thicker violet border for emphasis */
+}
+
+.main-header h1 {
+    font-size: 4.5rem; /* Even larger font size for main title */
+    color: #a78bfa; /* Vibrant violet */
+    margin-bottom: 15px; /* Space below the H1 */
+    text-shadow: 0 0 20px rgba(167, 139, 250, 0.9); /* Stronger glow effect */
+}
+
+.main-header p {
+    font-size: 1.5rem; /* Larger text for subheading */
+    color: #e2e8f0;
+}
+
+/* Main Content Area (Class Selector) */
+.main-content {
+    max-width: 960px; /* Adjusted max width for simpler content */
+    margin: 0 auto; /* Center the main content */
+    padding: 20px; /* Padding inside the main content area */
+    padding-bottom: 80px; /* More space below the main content */
+}
+
+/* Section Styling (Class Selector) - Common styles for all content sections */
+.content-section {
+    background-color: #2d3748; /* Dark section background */
+    padding: 30px; /* Inner space around content (Box Model: Padding) */
+    margin-bottom: 40px; /* Space between sections (Box Model: Margin) */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4); /* Deeper shadow for depth */
+    border: 1px solid #4a5568; /* Light border (Box Model: Border) */
+}
+
+.content-section h2 {
+    font-size: 2.8rem; /* Heading size for sections */
+    color: #c3a6ff; /* Lighter violet */
+    margin-bottom: 25px; /* Space below H2 */
+    border-bottom: 3px solid #805ad5; /* Thicker underline for headings */
+    padding-bottom: 15px; /* Padding for the underline */
+    text-align: center; /* Center section headings */
+}
+
+.content-section p {
+    font-size: 1.15rem;
+    margin-bottom: 20px; /* Consistent spacing for paragraphs */
+    line-height: 1.8;
+    color: #cbd5e0;
+}
+
+/* Media Section Styling (Class Selector) */
+.media-section {
+    text-align: center; /* Center media content */
+}
+
+.media-figure {
+    margin-bottom: 30px; /* Space between media figures */
+    display: inline-block; /* Ensures consistent layout for figures */
+    max-width: 100%; /* Ensure figures themselves are responsive */
+}
+
+.media-figure iframe,
+.media-figure img {
+    border-radius: 10px; /* Rounded corners for media */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); /* Stronger shadow for media */
+    max-width: 100%; /* Ensure media is responsive */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* JavaScript Interactive Section Styling - General Buttons and Displays */
+.power-controls, /* This class is no longer in use, but kept for consistency if needed later */
+.message-controls,
+.orb-controls { /* Orb controls no longer in use, but kept for consistency if needed later */
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.atomic-button {
+    background-color: #805ad5; /* Atomic violet */
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin: 0 10px;
+    /* Part 1: CSS3 Transitions for button hover effects */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(128, 90, 213, 0.4);
+}
+
+.atomic-button:hover {
+    background-color: #6b46c1; /* Darker violet on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 6px 20px rgba(128, 90, 213, 0.6);
+}
+
+/* The following classes are no longer in active use due to JS streamlining,
+   but are kept here to show previous animated elements if needed. */
+.current-power-display,
+.atomic-declaration,
+.countdown-text {
+    text-align: center;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #3f4a5a;
+    border-radius: 5px;
+    border: 1px solid #5a6a7c;
+}
+
+.atomic-declaration {
+    font-weight: bold;
+    color: #a78bfa; /* Vibrant violet for declarations */
+    font-size: 1.8rem;
+    min-height: 40px; /* Ensure space even when empty */
+}
+
+/* Part 1: CSS3 Keyframe Animation for Atomic Declaration */
+@keyframes atomicBurstGlow {
+    0% { transform: scale(1); opacity: 1; text-shadow: 0 0 10px #a78bfa; }
+    50% { transform: scale(1.05); opacity: 1; text-shadow: 0 0 30px #d6bcfa, 0 0 60px #a78bfa; }
+    100% { transform: scale(1); opacity: 1; text-shadow: 0 0 10px #a78bfa; }
+}
+
+.atomic-glow {
+    animation: atomicBurstGlow 0.8s ease-out;
+}
+
+.current-power-display span,
+.countdown-text span {
+    color: #38a169; /* Green for dynamic values */
+    font-weight: bold;
+}
+
+.atomic-components-list h3 {
+    text-align: center;
+    font-size: 1.6rem;
+    color: #a78bfa;
+    margin-bottom: 15px;
+}
+
+.atomic-components-list ul {
+    list-style: decimal inside; /* Numbered list */
+    padding-left: 0;
+}
+
+.atomic-components-list li {
+    background-color: #4a5568;
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    border-left: 3px solid #805ad5;
+    font-size: 1rem;
+    color: #e2e8f0;
+}
+
+/* Atomic Orb Styling (No longer active in HTML, but kept here for reference) */
+.orb-container {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.atomic-orb {
+    width: 100px;
+    height: 100px;
+    background-color: #805ad5;
+    border-radius: 50%;
+    margin: 0 auto;
+    box-shadow: 0 0 15px #a78bfa, 0 0 25px #a78bfa inset;
+    transition: background-color 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+@keyframes orbPulse {
+    0% { transform: scale(1); box-shadow: 0 0 15px #a78bfa, 0 0 25px #a78bfa inset; }
+    50% { transform: scale(1.1); box-shadow: 0 0 30px #d6bcfa, 0 0 50px #a78bfa inset; }
+    100% { transform: scale(1); box-shadow: 0 0 15px #a78bfa, 0 0 25px #a78bfa inset; }
+}
+
+.atomic-orb.pulsing {
+    animation: orbPulse 1.5s infinite ease-in-out;
+    background-color: #a78bfa;
+}
+
+/* -------------------- Shadow Intelligence Panel Styling (Part 1: CSS3 Transitions) -------------------- */
+.intel-panel {
+    margin-top: 25px;
+    padding: 20px;
+    background-color: #3f4a5a; /* Panel background */
+    border: 1px solid #5a6a7c;
+    border-radius: 8px;
+    overflow: hidden; /* Hide overflowing content during animation */
+
+    /* Initial hidden state with CSS Transitions */
+    max-height: 0; /* Hidden by default */
+    opacity: 0;
+    transform: translateY(20px); /* Start slightly below */
+    transition: max-height 0.7s ease-out, opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.intel-panel.visible {
+    max-height: 300px; /* Enough height to show content (adjust as needed) */
+    opacity: 1;
+    transform: translateY(0); /* Slide into view */
+}
+
+.intel-panel h3 {
+    font-size: 1.5rem;
+    color: #c3a6ff;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.intel-panel p {
+    font-size: 1rem;
+    color: #e2e8f0;
+    margin-bottom: 10px;
+}
+
+/* -------------------- Form Styling -------------------- */
+.application-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between form groups */
+    padding: 20px;
+    border: 1px solid #6b46c1; /* Atomic violet border */
+    border-radius: 8px;
+    background-color: #3f4a5a; /* Slightly lighter background for the form */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 1.1rem;
+    color: #c3a6ff;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group textarea {
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #5a6a7c;
+    background-color: #2d3748; /* Input background */
+    color: #e2e8f0; /* Input text color */
+    font-size: 1rem;
+    outline: none; /* Remove default outline */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #a78bfa; /* Highlight border on focus */
+    box-shadow: 0 0 0 2px rgba(167, 139, 250, 0.3); /* Subtle glow on focus */
+}
+
+.form-group textarea {
+    resize: vertical; /* Allow vertical resizing of textarea */
+    min-height: 100px;
+}
+
+.error-message {
+    color: #f87171; /* Red color for error messages */
+    font-size: 0.9rem;
+    margin-top: 5px;
+    min-height: 20px; /* Ensure space for error messages */
+}
+
+.form-submit-button {
+    align-self: flex-end; /* Align button to the right */
+    margin-top: 20px;
+}
+
+/* -------------------- Message Transformer Styling -------------------- */
+.message-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.message-controls label {
+    font-size: 1.1rem;
+    color: #c3a6ff;
+    font-weight: bold;
+}
+
+.message-controls textarea {
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #5a6a7c;
+    background-color: #2d3748;
+    color: #e2e8f0;
+    font-size: 1rem;
+    resize: vertical;
+    min-height: 120px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.message-controls textarea:focus {
+    border-color: #a78bfa;
+    box-shadow: 0 0 0 2px rgba(167, 139, 250, 0.3);
+}
+
+.transformed-message-display {
+    text-align: center;
+    font-size: 1.4rem;
+    margin-top: 25px;
+    padding: 15px;
+    background-color: #3f4a5a;
+    border-radius: 5px;
+    border: 1px solid #a78bfa; /* Highlighted border */
+    min-height: 60px;
+    display: flex; /* Use flex to center content vertically */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+}
+
+.transformed-message-display span {
+    font-weight: bold;
+    color: #38a169; /* Green for the transformed output */
+    word-break: break-all; /* Break long words */
+}
+
+
+/* -------------------- Footer Styling -------------------- */
+.main-footer {
+    text-align: center;
+    padding: 30px;
+    border-top: 2px solid #4a5568; /* Separator line */
+    color: #a0aec0; /* Lighter gray text */
+    font-size: 1rem;
+    margin-top: 50px;
+}
+
+/* Link Styling (Element Selector) */
+a {
+    color: #9f7aea; /* Violet links */
+    text-decoration: none; /* No underline */
+}
+
+a:hover {
+    text-decoration: underline; /* Underline on hover */
+    color: #d6bcfa; /* Lighter violet on hover */
+}
+
+/* -------------------- Responsive Design with Media Queries -------------------- */
+@media (max-width: 768px) {
+    .main-header h1 {
+        font-size: 3rem; /* Smaller header on mobile */
+    }
+
+    .main-header p {
+        font-size: 1.1rem;
+    }
+
+    .content-section h2 {
+        font-size: 2rem; /* Smaller section headings */
+    }
+
+    .content-section p {
+        font-size: 1rem;
+    }
+
+    .media-figure iframe,
+    .media-figure img {
+        width: 100%; /* Ensure media scales to fit */
+        height: auto;
+    }
+
+    .atomic-button {
+        padding: 12px 20px;
+        font-size: 1rem;
+        margin: 10px 0; /* Stack buttons vertically */
+        display: block; /* Make buttons block level */
+    }
+
+    /* Adjust orb size for smaller screens (Orb is not in HTML now, but styling remains) */
+    .atomic-orb {
+        width: 80px;
+        height: 80px;
+    }
+}
